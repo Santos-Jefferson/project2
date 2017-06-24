@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<header>
+<% include ../views/partials/header %>
+</header>
+
+
+<body>
+
+	<h1>Family Budget</h1>
+	<select name="year">
+		<option>2017</option>
+		<option>2018</option>
+		<option>2019</option>
+	</select>
+	<select name="month">
+		<option>Jan</option>
+		<option>Feb</option>
+		<option>Mar</option>
+		<option>Apr</option>
+		<option>May</option>
+		<option>Jun</option>
+		<option>Jul</option>
+		<option>Aug</option>
+		<option>Sep</option>
+		<option>Oct</option>
+		<option>Nov</option>
+		<option>Dez</option>
+	</select>
+	
+	<h3>Incomes</h3>
+	<label>Salary:</label>	<input type="text" name="salary"><br><br>
+	<label>Rents:</label>	<input type="text" name="rents"><br><br>
+
+	<h3>Expenses</h3>
+	<label>Tithing:</label>	<input type="text" name="salary"><br><br>
+	<label>Housing:</label>	<input type="text" name="salary"><br><br>
+	<label>School:</label>	<input type="text" name="salary"><br><br>
+	<label>Food:</label>	<input type="text" name="salary"><br><br>
+	<label>Transport:</label>	<input type="text" name="salary"><br><br>
+	<input type="submit" name="submit" value="Submit">
+
+	<footer>
+		<%include ../views/partials/footer %>
+	</footer>
+	
+</body>
+
+</html>
