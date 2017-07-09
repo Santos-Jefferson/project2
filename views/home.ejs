@@ -8,6 +8,8 @@
 <body>
 
 	<h1>Family Budget</h1>
+	<h2>Welcome family VARIABLE</h2>
+	<h3>Reports</h3>
 	<select name="year">
 		<option>2017</option>
 		<option>2018</option>
@@ -27,18 +29,48 @@
 		<option>Nov</option>
 		<option>Dez</option>
 	</select>
+	<hr>
 	
-	<h3>Incomes</h3>
-	<label>Salary:</label>	<input type="text" name="salary"><br><br>
-	<label>Rents:</label>	<input type="text" name="rents"><br><br>
+	<form action="/myaction" method="post">
+		<label>Date:</label>	<input type="date" name="date"><br><br>
+		<label>Amount(U$):</label>	<input type="number" name="amount"><br><br>
+		<label>Description:</label>	<input type="text" name="description"><br><br>
+		<label>Category:</label>	
+		<select name="category">
+			<option>Incomes</option>
+			<option>Giving</option>
+			<option>Food</option>
+			<option>Utilities</option>
+			<option>Clothing</option>
+			<option>Transportation</option>
+			<option>Medical</option>
+			<option>Insurance</option>
+			<option>Personal</option>
+			<option>Retirement</option>
+			<option>Education</option>
+			<option>Savings</option>
+			<option>Gifts</option>
+			
+		</select>
+		
+		<!--
+		<h3>Incomes</h3>
+		<label>Salary:</label>	<input type="text" name="salary"><br><br>
+		<label>Rents:</label>	<input type="text" name="rents"><br><br>
+		<hr>
 
-	<h3>Expenses</h3>
-	<label>Tithing:</label>	<input type="text" name="salary"><br><br>
-	<label>Housing:</label>	<input type="text" name="salary"><br><br>
-	<label>School:</label>	<input type="text" name="salary"><br><br>
-	<label>Food:</label>	<input type="text" name="salary"><br><br>
-	<label>Transport:</label>	<input type="text" name="salary"><br><br>
-	<input type="submit" name="submit" value="Submit">
+		<h3>Expenses</h3>
+		<label>Tithing:</label>	<input type="text" name="tithing"><br><br>
+		<label>Housing:</label>	<input type="text" name="housing"><br><br>
+		<label>School:</label>	<input type="text" name="school"><br><br>
+		<label>Food:</label>	<input type="text" name="food"><br><br>
+		<label>Transport:</label>	<input type="text" name="transport"><br><br>
+		-->
+		<hr>
+		
+		<input type="submit" name="submit" value="Submit">
+		<br>
+	</form>
 
 	<footer>
 		<%include ../views/partials/footer %>

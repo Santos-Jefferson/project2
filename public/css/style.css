@@ -19,3 +19,28 @@ input {
   display: inline-block;
   float: left;
 }
+
+h3{
+	color: red;
+}
+input[type=button], input[type=submit], input[type=reset] {
+    width: 20%;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+button {
+    width: 10%;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
