@@ -8,7 +8,7 @@
 <body>
 
 	<h1>Family Budget</h1>
-	<h2>Welcome family VARIABLE</h2>
+	<h2>Welcome Family</h2>
 	<h3>Reports</h3>
 	<select name="year">
 		<option>2017</option>
@@ -30,7 +30,7 @@
 		<option>Dez</option>
 	</select>
 	<hr>
-	
+		
 	<form action="/myaction" method="post">
 		<label>Date:</label>	<input type="date" name="date"><br><br>
 		<label>Amount(U$):</label>	<input type="number" name="amount"><br><br>
@@ -69,8 +69,14 @@
 		<hr>
 		
 		<input type="submit" name="submit" value="Submit">
-		<br>
+		<br><br><br>
 	</form>
+	
+	<form action="/getdata" method="get">
+		<input type="submit" value="REPORT">
+	</form>
+	<br><br><br><br>
+	<hr>
 
 	<footer>
 		<%include ../views/partials/footer %>

@@ -54,7 +54,6 @@ app.post('/logout', handleLogout);
 
 app.use(bodyParser.urlencoded({
 	extended: true
-
 }));
 
 // Setup our routes
@@ -120,7 +119,6 @@ function logRequest(request, response, next) {
 }
 
 app.use(bodyParser.json());
-
 app.post("/myaction", function (req, res){
 	//variables coming from HTML FORM method POST
 	var date = req.body.date;
@@ -133,34 +131,27 @@ app.post("/myaction", function (req, res){
 	const values = [date, amount, 1, description, 1];
 
 	client.query(queryInsert, values, (err, res)=> {
-	if (err) {
-		console.log(err.stack)
-	} else {
-		console.log(res.rows[0])
-	}
-	
-});
-	
-	
-	//console.log(date);
-
+		if (err)
+		{
+			console.log(err.stack)
+		}
+		else
+		{
+			console.log(res.rows[0])
+		}
+	});
 	var query = client.query("SELECT * FROM family");
-
-        query.on("row", function (row, result) { 
-            result.addRow(res.rows[0]); 
-        });
-
-        query.on("end", function (req, res){          
-            client.end();
-            res.writeHead(200, {'Content-Type': 'text/plain'});
-            res.write(JSON.stringify(result.rows[0], null, "    ") + "\n");
-            res.end();  
-        });
-		});
-
-
-
-
+    query.on("row", function (row, result) { 
+        result.addRow(res.rows); 
+    });
+	
+    query.on("end", function (req, res){          
+        //client.end();
+        res.writeHead(200, {'Content-Type': 'text/plain'});
+        res.write(JSON.stringify(result.rows[0], null, "    ") + "\n");
+		res.end();  
+    });
+});
 
 
 /*
@@ -171,11 +162,11 @@ client.query('SELECT $1::text as message', ['Hello world!'], (err, res) => {
 */
 
 
-/*
+
 const query = {
 	name: 'fetch-family', 
 	text: 'SELECT * FROM family WHERE familyid = $1', 
-	values: [1]
+	values: [2]
 }
 client.query(query, (err, res) => {
 	if (err){
@@ -184,15 +175,12 @@ client.query(query, (err, res) => {
 		console.log(res.rows[0]);
 	}
 });
-*/
-
 
 
 
 
 //webserver
 app.set('port', (process.env.PORT || 5000));
-
 app.use(express.static(__dirname + '/public'));
 
 //folder with main pages
@@ -206,17 +194,43 @@ app.get('/', function(req, res){
 	res.render('login');
 });
 
+
+
+//Users
+//get all users
+var pg = require('pg');
+var cnx = 'postgres://postgres:aaml0509@localhost:5432/familyBudget';
+
+app.get('/getdata', function(req, res, next) {
+  pg.connect(cnx, function(err, client, done) {
+    if (err) {
+      return console.error('error fetching client from pool', err);
+    }
+    console.log("connected to database");
+    client.query('SELECT familyusername AS family, date, amount, description FROM family, expense WHERE family.familyid = expense.familyid', function(err, result) {
+      done();
+      if (err) {
+        return console.error('error running query', err);
+      }
+      res.setHeader('content-type', 'application/json');
+	  res.send(JSON.stringify(result.rows,null,2));
+    });
+  });
+});
+
+
 //home page
 app.get('/home', function(req, res){
 	res.render('home');
 });
 
+/*
 //form (myaction)
 app.get('/myaction', function(req, res){
 	res.render('form');
 });
+*/
 
 app.listen(app.get('port'), function(){
 	console.log('Node app is running on port', app.get('port'));
 });
-
