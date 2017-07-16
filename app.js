@@ -4,6 +4,20 @@ var app = express();
 var bodyParser = require('body-parser');
 const { Pool, Client } = require('pg');
 
+var pg = require('pg');
+
+app.get('/db', function (request, response) {
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+    client.query('SELECT * FROM test_table', function(err, result) {
+      done();
+      if (err)
+       { console.error(err); response.send("Error " + err); }
+      else
+       { response.render('pages/db', {results: result.rows} ); }
+    });
+  });
+});
+
 const pool = new Pool({
 	user: 'postgres',
 	host: 'postgres://avhmfsjekhngsy:6052c2d54b48ab1a7e55c9ae678af9e25dbc7877c77cb13cbb5a23956d5d1b4c@ec2-54-197-232-155.compute-1.amazonaws.com:5432/dfv5tacs6f0k53',
