@@ -32,7 +32,7 @@ app.use(session({
 }))
 
 //connecting postgres
-client.connect();
+//client.connect();
 
 // Because we will be using post values, we need to include the body parser module
 var bodyParser = require('body-parser')
