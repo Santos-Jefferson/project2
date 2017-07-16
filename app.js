@@ -3,7 +3,7 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 const { Pool, Client } = require('pg');
-/*
+
 const pool = new Pool({
 	user: 'postgres',
 	host: 'localhost',
@@ -19,7 +19,7 @@ const client = new Client({
 	password: 'aaml0509',
 	port: 5432,
 });
-*/
+
 // We are going to use sessions
 //var parseurl = require('parseurl')
 var session = require('express-session')
