@@ -153,7 +153,7 @@ app.post("/myaction", function (req, res){
 		{
 			console.log(res.rows[0])
 		}
-		  client.end();
+		  //client.end();
 	});
 	var query = client.query("SELECT * FROM family");
     query.on("row", function (row, result) { 
@@ -225,7 +225,7 @@ app.get('/getdata', function(req, res, next) {
     console.log("connected to database");
     client.query('SELECT familyusername AS family, date, amount, description FROM family, expense WHERE family.familyid = expense.familyid', function(err, result) {
 	  done();
-	  client.end();
+	  //client.end();
       if (err) {
         return console.error('error running query', err);
       }
