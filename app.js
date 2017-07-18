@@ -224,7 +224,7 @@ app.get('/getdata', function(req, res, next) {
     console.log("connected to database");
     client.query('SELECT familyusername AS family, date, amount, description FROM family, expense WHERE family.familyid = expense.familyid', function(err, result) {
 	  done();
-	  client.end();
+//	  client.end();
       if (err) {
         return console.error('error running query', err);
       }
